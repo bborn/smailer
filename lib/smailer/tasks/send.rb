@@ -13,7 +13,7 @@ module Smailer
 
         rails_delivery_method = if Smailer::Compatibility.rails_3_or_4?
           method = Rails.configuration.action_mailer.delivery_method
-          [method, Rails.configuration.action_mailer.send("#{method}_settings")]
+          [ActionMailer::Base.delivery_methods[method], ActionMailer::Base.send("#{method}_settings")]
         else
           [ActionMailer::Base.delivery_method]
         end
