@@ -8,8 +8,8 @@ module Smailer
       end
 
       belongs_to :mailing_list
-      has_many :queued_mails, :dependent => :destroy
-      has_many :finished_mails, :dependent => :destroy
+      has_many :queued_mails, :dependent => :delete_all
+      has_many :finished_mails, :dependent => :delete_all
       has_many :attachments,
                :class_name => '::Smailer::Models::MailCampaignAttachment'
 
